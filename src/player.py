@@ -9,4 +9,4 @@ class Player:
     def __str__(self):
         return str(self.__dict__)
 
-print(Player("Phil", "bedroom", "knife"))
+#print(Player("Phil", "bedroom", "knife"))
