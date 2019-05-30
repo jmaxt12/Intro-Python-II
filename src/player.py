@@ -6,7 +6,12 @@ class Player:
         self.name = name
         self.current_room = current_room
         self.item = item
-    def __str__(self):
-        return str(self.__dict__)
+    def travel(self, direction):
+        nextRoom = self.current_room.getRoomInDirection(direction)
+        if nextRoom is not None:
+            self.current_room = nextRoom
+            print(self.current_room)
+        else:
+            print("You shall not pass.")
 
 #print(Player("Phil", "bedroom", "knife"))

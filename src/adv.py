@@ -42,7 +42,7 @@ room['treasure'].s_to = room['narrow']
 
 player = Player(input('name : '), room['outside'], input('starting item : '))
 
-#print(player)
+# print(player)
 
 # Write a loop that:
 #
@@ -55,35 +55,39 @@ player = Player(input('name : '), room['outside'], input('starting item : '))
 #
 # If the user enters "q", quit the game.
 
-def player_moving(direction):
-    if direction == 'n':
-        if player.current_room.n_to is not None:
-            player.current_room = player.current_room.n_to
-        else:
-            print(error)
-    elif direction == 's':
-        if player.current_room.s_to is not None:
-            player.current_room = player.current_room.s_to
-        else:
-            print(error)
-    elif direction == 'e':
-        if player.current_room.e_to is not None:
-            player.current_room = player.current_room.e_to
-        else:
-            print(error)
-    elif direction == 'w':
-        if player.current_room.w_to is not None:
-            player.current_room = player.current_room.w_to
-        else:
-            print(error)
+# def player_moving(direction):
+#     error = "\n Try another direction, no room here\n"
+#     if direction == 'n':
+#         if player.current_room.n_to is not None:
+#             player.current_room = player.current_room.n_to
+#         else:
+#             print(error)
+#     elif direction == 's':
+#         if player.current_room.s_to is not None:
+#             player.current_room = player.current_room.s_to
+#         else:
+#             print(error)
+#     elif direction == 'e':
+#         if player.current_room.e_to is not None:
+#             player.current_room = player.current_room.e_to
+#         else:
+#             print(error)
+#     elif direction == 'w':
+#         if player.current_room.w_to is not None:
+#             player.current_room = player.current_room.w_to
+#         else:
+#             print(error)
     
 
+# print(f'\n Current Room: {player.current_room.room_name}\n Description: {player.current_room.description}\n')
+
+# move = input("[n] North  [s] South   [e] East   [w] West    [q] Quit\n")
+
 while True:
-    print(f'\n Current Room: {player.current_room.room_name}\n Description: {player.current_room.description}\n')
-
-    move = input("Type 'n', 's', 'e', or 'w' to move rooms :")
-
-    player_moving(move)
-    if move == 'q':
-        break 
-   
+    cmd = input("==>> ")
+    if cmd in ['n', 's', 'e', 'w']:
+        player.travel(cmd)
+    elif cmd == 'q':
+        break
+    else:
+        print("I do not understand that command\n")
